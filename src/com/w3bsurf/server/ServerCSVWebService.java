@@ -7,17 +7,20 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
+@Path("files")
 public class ServerCSVWebService {
 	
 	@POST
-	@Path("/upload")
+	@Path("upload")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public String uploadFile(
 		@FormDataParam("file") InputStream uploadedInputStream,
@@ -29,10 +32,15 @@ public class ServerCSVWebService {
 		return "File uploaded successfully!";
 	}
 	
+	/*@GET
+	@Path("/test")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String */
+	
 	private void saveToDatabase(InputStream uploadedInputStream,
 			FormDataContentDisposition fileDetail) {
 		
-		String uploadedFileLocation = "C:\\Users\\joona\\eclipse-workspaces\\eclipse-jee-workspace\\RESTfulWS\\" + fileDetail.getFileName();
+		String uploadedFileLocation = "C:\\Users\\Joonas\\eclipse-workspaces\\eclipse-workspace-jee\\csv_web_service\\" + fileDetail.getFileName();
 		try {
 			OutputStream out = new FileOutputStream(new File(uploadedFileLocation));
 			int read = 0;
