@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+<Resource name="jdbc/csvdb"
+
+auth="Container"
+
+type="javax.sql.DataSource"
+
+username="root"
+
+password="password"
+
+driverClassName="com.mysql.jdbc.Driver"
+
+url="jdbc:mysql://localhost:3306/csvdb"
+
+
+maxActive="15"
+
+maxIdle="3"/>
+
+</Context>
